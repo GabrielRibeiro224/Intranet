@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mural - Intranet Corporativa</title>
+
+    <!-- Estilos Próprios (CSS Puro) -->
+    <link rel="stylesheet" href="./styles/style.css" />
+    <script src="./script/index.js"></script>
+
+    <!-- Biblioteca de Ícones Leve (Phosphor Icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  </head>
+  <body>
+    <div class="app-layout">
+      <!-- 1. BARRA LATERAL DE NAVEGAÇÃO -->
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="brand-logo">
+            <i class="ph-bold ph-storefront"></i>
+          </div>
+          <div class="brand-text">
+            <h1>INTRANET</h1>
+            <span>Supermercado Padrão</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <span class="nav-section-label">Principal</span>
+          <a href="index.html" class="nav-item active">
+            <i class="ph ph-newspaper"></i>
+            <span>Mural</span>
+          </a>
+          <a href="beneficios.html" class="nav-item">
+            <i class="ph ph-heart"></i>
+            <span>Nossos Benefícios</span>
+          </a>
+          <a href="filiais.html" class="nav-item">
+            <i class="ph ph-map-pin-line"></i>
+            <span>Filiais</span>
+          </a>
+
+          <span class="nav-section-label">Utilidades</span>
+          <a href="sistemas.html" class="nav-item">
+            <i class="ph ph-squares-four"></i>
+            <span>Sistemas</span>
+          </a>
+          <a href="contatos.html" class="nav-item">
+            <i class="ph ph-address-book"></i>
+            <span>Lista de Contatos</span>
+          </a>
+          <a href="normas.html" class="nav-item">
+            <i class="ph ph-file-text"></i>
+            <span>Instrumentos Normativos</span>
+          </a>
+          <a href="guias.html" class="nav-item">
+            <i class="ph ph-book-open"></i>
+            <span>Guias & Manuais</span>
+          </a>
+          <a href="suporte.html" class="nav-item">
+            <i class="ph ph-headset"></i>
+            <span>Fale com o TI</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-user">
+          <div class="user-avatar">
+            <i class="ph ph-user"></i>
+          </div>
+          <div class="user-details">
+            <span class="user-name">Colaborador</span>
+            <span class="user-unit">Matriz - Fonseca</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- 2. ÁREA PRINCIPAL DE CONTEÚDO -->
+      <div class="main-wrapper">
+        <!-- Topbar com Busca e Informações Rápidas -->
+        <header class="topbar">
+          <div class="search-box">
+            <i class="ph ph-magnifying-glass"></i>
+            <input
+              type="search"
+              placeholder="Pesquisar comunicados, cardápio, ramais..."
+            />
+          </div>
+
+          <div class="topbar-actions">
+            <div class="status-indicator">
+              <span class="dot-online"></span>
+              <span>Rede Interna Ativa</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Conteúdo do Mural -->
+        <main class="dashboard-content">
+          <!-- Banner de Boas-Vindas / Título -->
+          <section class="page-banner">
+            <div class="banner-text">
+              <h2>Mural Corporativo</h2>
+              <p>
+                Fique por dentro das novidades, comunicados e do cardápio
+                semanal do refeitório.
+              </p>
+            </div>
+            <div class="banner-badge">
+              <i class="ph ph-calendar-check"></i>
+              <span id="current-date">Semana Atual</span>
+            </div>
+          </section>
+
+          <!-- Grade de Layout: Coluna Principal vs Lateral -->
+          <div class="dashboard-grid">
+            <!-- COLUNA ESQUERDA: Cardápio e Publicações -->
+            <div class="feed-column">
+              <!-- Widget do Cardápio da Semana -->
+              <section class="menu-widget">
+                <header class="widget-header">
+                  <div class="widget-title">
+                    <span class="badge-tag">Refeitório Matriz</span>
+                    <h3>Cardápio da Semana</h3>
+                    <small
+                      >Almoço: 12:00 às 14:00 • Café da Manhã: 06:00 às
+                      08:00</small
+                    >
+                  </div>
+                  <div class="menu-period-tag">
+                    <i class="ph ph-clock"></i>
+                    <span id="menu-period-text">21/09 a 25/09</span>
+                  </div>
+                </header>
+
+                <!-- Navegação dos Dias (Abas) -->
+                <nav class="day-tabs" aria-label="Dias da Semana">
+                  <button
+                    type="button"
+                    class="tab-button active"
+                    data-day="segunda"
+                  >
+                    <span class="day-abbr">SEG</span>
+                    <span class="day-name">Segunda</span>
+                  </button>
+                  <button type="button" class="tab-button" data-day="terca">
+                    <span class="day-abbr">TER</span>
+                    <span class="day-name">Terça</span>
+                  </button>
+                  <button type="button" class="tab-button" data-day="quarta">
+                    <span class="day-abbr">QUA</span>
+                    <span class="day-name">Quarta</span>
+                  </button>
+                  <button type="button" class="tab-button" data-day="quinta">
+                    <span class="day-abbr">QUI</span>
+                    <span class="day-name">Quinta</span>
+                  </button>
+                  <button type="button" class="tab-button" data-day="sexta">
+                    <span class="day-abbr">SEX</span>
+                    <span class="day-name">Sexta</span>
+                  </button>
+                </nav>
+
+                <!-- Área onde o JS ou os dados estáticos injetam os pratos -->
+                <div class="menu-body" id="menu-display-area">
+                  <!-- Conteúdo dinâmico montado pelo script -->
+                </div>
+
+                <footer class="widget-footer">
+                  <i class="ph ph-info"></i>
+                  <span
+                    >Cardápio sujeito a alteração em caso de indisponibilidade
+                    de insumos.</span
+                  >
+                </footer>
+              </section>
+
+              <!-- Card de Comunicado em Destaque (Exemplo de Post) -->
+              <article class="post-card">
+                <div class="post-meta">
+                  <span class="category-pill rh">Recursos Humanos</span>
+                  <span class="post-date">Publicado em 21 de Setembro</span>
+                </div>
+                <h4 class="post-title">
+                  Campanha Interna e Atualização de Benefícios
+                </h4>
+                <p class="post-summary">
+                  Confira os novos parceiros do convênio e consulte seu RH local
+                  para verificar a elegibilidade e os prazos de inscrição do
+                  próximo ciclo.
+                </p>
+              </article>
+            </div>
+
+            <!-- COLUNA DIREITA: Aniversariantes e Atalhos -->
+            <aside class="sidebar-column">
+              <!-- Box de Acesso Rápido a Links Mais Usados -->
+              <div class="side-box">
+                <h4 class="side-box-title">
+                  <i class="ph ph-lightning"></i>
+                  Acesso Rápido
+                </h4>
+                <ul class="quick-links">
+                  <li>
+                    <a href="#" class="quick-link-item">
+                      <i class="ph ph-ticket"></i>
+                      <span>Abertura de Chamados (TI)</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="quick-link-item">
+                      <i class="ph ph-envelope-simple"></i>
+                      <span>Webmail Corporativo</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="quick-link-item">
+                      <i class="ph ph-chart-line-up"></i>
+                      <span>Painéis Power BI</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Box de Aniversariantes do Mês -->
+              <div class="side-box">
+                <h4 class="side-box-title">
+                  <i class="ph ph-cake"></i>
+                  Aniversariantes da Semana
+                </h4>
+                <ul class="birthday-list">
+                  <li class="birthday-item">
+                    <div class="avatar-circle">DR</div>
+                    <div class="birthday-info">
+                      <strong>Diego Frota</strong>
+                      <small>TI • 21 de Setembro</small>
+                    </div>
+                  </li>
+                  <li class="birthday-item">
+                    <div class="avatar-circle">RS</div>
+                    <div class="birthday-info">
+                      <strong>Raiana Custódio</strong>
+                      <small>Comercial • 22 de Setembro</small>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Script limpo do Cardápio -->
+  </body>
+</html>
